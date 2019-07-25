@@ -1,0 +1,454 @@
+
+<!-- saved from url=(0056)http://junctionpublishing.org/vgtc/Tasks/electronic.html -->
+<html class="gr__junctionpublishing_org"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  
+  <title>Preparation of Quality PDF Documents
+  </title>
+
+<style type="text/css">
+<!--
+body,td,th {
+	font-family: Arial, Helvetica, sans-serif;
+}
+-->
+</style>
+<style type="text/css">
+		@import url(vgtc.css);
+	body {
+	background-image: url(shadow1.gif);
+}
+</style>
+</head>
+
+<body data-gr-c-s-loaded="true">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <td rowspan="3" valign="top"><a href="http://tab.computer.org/vgtc/"><img border="0" src="./index_files/vgtc_logo1.gif" width="201" height="125"></a>
+<br><!-- #BeginLibraryItem "../menu_master1.lbi" -->
+<table cellpadding="5">
+     <tbody><tr><td>
+      <div class="noUnderline">
+        <p>
+        <a class="none" href="index.html">PacificVis</a><br>
+
+        <br/>
+        <a class="none" href="http://www.pvis.org">PacificVis Homepage</a><br>
+        </p>
+       </div>
+     </td></tr>
+     </tbody></table><!-- #EndLibraryItem --><!-- INSERTMENUEND -->    </td>
+    <td height="53" colspan="2" valign="top" bgcolor="#3399CC"><img src="./index_files/spacer.gif" width="100" height="35"><br><img src="./index_files/logo_graphictechcomm.gif" width="193" height="18"></td>
+  </tr>
+  <tr>
+    <td valign="top" background="./index_files/stripe.gif" bgcolor="#3399CC"><img src="./index_files/spacer.gif" width="7" height="7" vspace="0"><br><img src="./index_files/stripe1.gif" width="8" height="42" vspace="0">
+</td>
+    <td width="100%" height="49" background="./index_files/stripe.gif" bgcolor="#3399CC" class="PageTitle">Preparation of Quality PDF Documents</td>
+  </tr>
+  <tr>
+<td>&nbsp;</td>
+    <td width="80%">
+<!-- INSERTCONTENTSBEGIN -->
+
+      <u><h2>Contents</h2></u> <!--electronic-->
+      <p>
+      </p><ul class="list">
+	<li><a href="http://junctionpublishing.org/vgtc/Tasks/electronic.html#overview" name="TOCoverview">Overview</a>
+	</li><li><a href="http://junctionpublishing.org/vgtc/Tasks/electronic.html#latex_info" name="TOClatex">Document Formatting with TeX and Latex</a>
+	<ul class="list">
+	  <li><a href="http://junctionpublishing.org/vgtc/Tasks/electronic.html#pdftex_info" name="TOCpdftex">From TeX to PDF</a>
+	  </li><li><a href="http://junctionpublishing.org/vgtc/Tasks/electronic.html#tex_details_info" name="TOCtex_details">Configuring TeX / dvips</a>
+	</li></ul>
+	</li><li><a href="http://junctionpublishing.org/vgtc/Tasks/electronic.html#other_doc_makers_info" name="TOCother_doc_makers">
+	      MS Word and other Document Creation Software</a>
+	</li><li><a href="http://junctionpublishing.org/vgtc/Tasks/electronic.html#pdf_creation_info" name="TOCpdf_creation">
+	      Creating PDF Files From Postscript</a>
+	</li><li><a href="http://junctionpublishing.org/vgtc/Tasks/electronic.html#problems_info" name="TOCproblems">Common Problems</a>
+      </li></ul>
+
+      <p> <b>Note: Not following these guidelines closely often results in
+      the omission of math formulas or in text becoming scrambled and
+      unreadable, even though your document looks good on the screen for you.
+      </b>
+      </p><p>
+      Much of the material presented here has been extracted from the
+      excellent
+      <a href="http://www.siggraph.org/publications/instructions/">
+      web page</a> that Steven Spencer has put together for siggraph
+      contributors. In particular the <a href="http://www.siggraph.org/publications/instructions/author-instructions.pdf">guidelines</a>
+      given there should be referred to as a supplement to this page. Also
+      there are a number of interesting "Tips and Tricks"
+      mentioned on the <a href="http://www.siggraph.org/publications/instructions/">main
+      page</a>.</p>
+
+      <p>
+      Note: please do not contact Stephen Spencer with questions
+      regarding IEEE VGTC sponsored conference submissions (i.e. Vis,
+      InfoVis, VR, and others). If you have questions
+      regarding document formatting, please forward them to <a href="mailto:submissions@vgtc.org">submissions@vgtc.org</a>.</p>
+
+      <p>
+      All papers on the USB (if applicable) will be included in
+      Adobe Acrobat Format
+      (PDF). Electronic submissions can only be accepted if they are in
+       PDF format. We will help you convert Postscript files
+      into PDF if you are having difficulty.      </p>
+
+      <p>
+      It is recommended that LaTeX be used to format your accepted
+      paper. When properly configured LaTeX will produce superior
+      output compared to most other popular text formatting
+      systems. However some care must be taken to ensure good
+      reproduction in the electronic version of the paper. Guidelines
+      to this end are given <a href="#latex_info">below</a>.
+      </p>
+
+      <p>
+      General instructions for producing quality PDF documents from a
+      postscript intermediate can be found
+<a href="#pdf_creation_info" name="TOCpdf_creation">here</a>.
+</p>
+
+<a name="overview" href="#TOCoverview">
+<h2>Overview</h2>
+</a>
+
+<p>
+Here we are primarily concerned with producing PDF documents
+that will look good when they are printed as well as when they
+are viewed electronically. To this end we wish to ensure that:
+</p><ul class="list">
+  <li>all fonts are embedded in the document</li>
+  <li>no type 3 fonts are used</li>
+  <li>all images are high resolution and uncompressed</li>
+</ul>
+<p>
+  Please restrict your fonts to Type 1 fonts. Specifically,
+  True type fonts should be avoided and we will not accept
+  documents that are composed with Type 3 fonts.</p>
+
+
+<a name="latex_info" href="#TOClatex">
+<h2>Document Formatting with TeX and LaTeX</h2>
+</a>
+
+<p> When TeX or LaTeX is used to format documents care must be taken
+as to the use of fonts. Specifically, until very recently the default
+behaviour when converting the dvi output of TeX to Postscript was to
+use non-scalable Type 3 PostScript bitmap fonts to represent the
+standard TeX fonts. The resulting document is difficult to read in
+electronic form; the type appears fuzzy.</p>
+
+<p>Another problem is that the standard 'base 14' fonts that are
+supplied by all software that can render pdf documents turn out to be
+not so standard after all. This typically leads to missing math symbols
+or ligatures in the printed documents. In order to avoid problems,
+these fonts must be embedded in the document. Please read the section
+on <a href="#tex_details_info">configuring TeX</a> and set up your
+distribution appropriately.</p>
+
+<p> Assuming that dvips is directed to the appropriate font map files,
+as described <a href="#tex_details_info">below</a>, a postscript
+intermediary file can be created with the following command:
+<br><br>
+<code>
+dvips -t letter -Ppdf -G0 -o papername.ps papername.dvi
+</code>
+<br><br>
+Note that it is a zero following the "-G". The
+<code>-Ppdf</code> flag tells dvips to use the config.pdf file.  </p>
+
+<p>If for some reason you had trouble creating a workable .dvipsrc
+file, you can instruct dvips to use the download35.map file with the
+command
+<br><br>
+<code>
+dvips -t letter -Pdownload35 -G0 -o papername.ps papername.dvi
+</code>
+<br><br>
+With this latter method the other configurations provided by
+config.pdf will not be used, but the font mapping is acceptable; there
+are no type 3 fonts and ALL fonts are embedded.</p>
+
+
+<p>Once the document is converted to PDF as described <a href="#pdf_creation_info">below</a>, you should check to ensure that
+it contains no Type 3 fonts. This can be done with the
+<code>pdffonts</code> utility that is included in the <code><a href="http://www.foolabs.com/xpdf/">Xpdf</a></code>
+package. Alternatively, you can use the
+<code>File-&gt;Document_Properties-&gt;Fonts</code> option in Acrobat
+Reader, although this seems to be somewhat less reliable especially if
+Reader has more than one document open.  If the base 14 fonts (Times
+New Roman, Symbol, etc.) are not embedded in the document, then the
+appropriate font map file was not used. Please make sure that you have
+a recent distribution of Tex and have followed the instructions for
+setting it up as described <a href="#tex_details_info">below</a>.</p><p>
+
+</p><p>
+Documents formatted with Type 3 bitmap fonts will not be accepted.</p>
+
+<a name="pdftex_info" href="#TOCpdftex">
+<h3>From TeX to PDF</h3>
+</a>
+
+<p>
+A standard way to produce a PDF document from TeX source is to create
+a dvi file and then convert that to Postscript using the command
+<br><br>
+<code>
+dvips -t letter -Ppdf -G0 -o papername.ps papername.dvi
+</code>
+<br><br>
+mentioned <a href="#latex_info">above</a>. This Postscript document
+can then be converted to PDF as described <a href="#pdf_creation_info">below</a>.</p>
+
+<p>Note that scripts such as <code>dvipdf</code> which ostensibly
+bypass the Postscript intermediary should not be used since they
+generally do not instruct <code>dvips</code> to use the
+<code>config.pdf</code> file.</p>
+
+<p> Another alternative is to use the <code>pdflatex</code>
+(<code>pdftex</code>) program instead of straight LaTeX or TeX. This
+program avoids the Type 3 font problem, however you must ensure that
+all of the fonts are embedded (the <code>pdffonts</code> utility
+mentioned <a href="#latex_info">above</a> will yield this
+information). If they are not, you need to configure
+<code>pdftex</code> to use a font map file that specifies that the
+fonts be embedded. Also you should ensure that images are not
+downsampled or otherwise compressed in a lossy way. If you are
+knowledgeable about how pdflatex deals with included images and how to
+ensure that they are not compressed or downsampled, please email us at
+<a href="mailto:submissions@vgtc.org">submissions@vgtc.org</a> so that we might
+improve our support for this program.  </p>
+
+
+<a name="tex_details_info" href="#TOCtex_details">
+<h3>Configuring TeX / dvips</h3>
+</a>
+
+<p> It is essential that your TeX distribution has the facilities to
+create PDF documents without type 3 fonts. In addition, we need to
+configure the system so that the base 14 fonts are embedded in the
+document. Only very recent distributions of TeX provide anything close
+to a convenient mechanism for achieving this. In particular, the
+following instructions apply to teTeX-2.0, TeXlive2003 and/or MikTeX
+but not to earlier distributions.</p>
+
+<p>We recommend that the final document be produced by
+latex-&gt;dvips-&gt;ps2pdf since that enables explicit control over how
+fonts and images are managed. We are not sure that the default
+settings for pdftex do not result in downsampled or compressed
+images.</p>
+
+<p>In order to ensure that no type 3 fonts are used and that all
+fonts, including the base 14 fonts, are embedded we must reference an
+appropriate font map file. One such file is provided for pdftex and is
+called pdftex_dl14.map. This is the one that we recommend; it works
+fine for dvips. There is also a file called download35.map, that is
+specifically made for dvips. It seems to also produces acceptable
+documents. Both of these files are only available in the recent
+distributions mentioned above.</p>
+
+<p>We have tested the following distributions:
+
+</p><p><b><u>Unix/Linux: teTeX-2.0, TeX Live 2003</u></b>
+
+</p><ul class="list"> 
+  <li> Install the latest version of Ghostscript from
+    <a href="http://www.ghostscript.com/">http://www.ghostscript.com/</a>
+    <br>This will come with the latest version of ps2pdf.
+
+  </li><li> Install the latest teTeX distribution from
+        <a href="http://www.tug.org/teTeX/">http://www.tug.org/teTeX/</a>
+       <br> or the latest TeX Live distribution from
+        <a href="http://texlive.sarovar.org/">http://texlive.sarovar.org/</a>
+
+  </li><li>There are a few different ways to instruct dvips to use an
+    appropriate font map file.  The easiest is to create a file called
+    <code>.dvipsrc</code> in your home directory with a line specifying
+    which font map file to use. The line will look something like this:
+    <br>
+    <code>
+    p +/usr/local/TeX_Live_2003/texmf/fonts/map/pdftex/updmap/pdftex_dl14.map
+    </code>
+    <br>
+    However you must change the path name so that it is right for your
+    distribution. (On MacOSX this can typically be found at
+    <code>/sw/share/texmf/dvips/config/pdftex_dl14.map</code>)</li>
+</ul>
+
+<p><b><u>Windows: MiKTeX</u></b>
+
+</p><ul class="list">
+  <li> Install the latest version of Ghostscript from
+    <a href="http://www.ghostscript.com/">http://www.ghostscript.com/</a>
+    <br>This will come with the latest version of ps2pdf.
+
+  </li><li> Install the latest MiKTeX distribution from
+    <a href="http://www.miktex.org/">http://www.miktex.org/</a>
+
+  </li><li> You will need to insert the line
+    <br>
+    <code>
+    p +download35.map
+    </code>
+    <br>
+    into the file <code>c:/texmf/dvips/config/config.pdf</code>.
+    However you must change the path name so that it is right for your
+    distribution.</li>
+</ul>
+
+
+<!--
+<p>If you use pdf(la)tex, you can also configure it to embed the base
+14 fonts.  In the web2c directory of your TeX distribution, you will
+find a file named updmap.cfg. In it make sure that you have
+pdftexDownloadBase14 true. Then run the updmap script; this will
+ensure that the file pdftex.map specifies that the base 14 fonts will
+be embedded by pdftex. Note that this procedure requires administrator
+access to your TeX distribution. If you do not have administrator
+access, you must instruct pdftex to use the map file called
+pdftex_dl14.map (see the pdftex documentation). You can learn more by
+following <a
+href="http://tug.org/mailman/htdig/pdftex/2004-February/thread.html#4763">
+this thread</a>.</p>
+-->
+
+<p> If you have trouble with these instructions or have other
+suggestions, please do not hesitate to
+<a href="mailto:submissions@vgtc.org">contact us.</a>
+</p><p> If you wish to install new fonts or create alternative font map
+files. We cannot supply instructions here, however there are online
+resources that may help you (or the TeXpert at your site). As a start
+you may wish to refer to these:
+
+<br> </p><ul class="list">
+  <li><a href="http://junctionpublishing.org/vgtc/PDF/qualityPDFs.pdf">
+  "Creating Acrobat PDF using DVIPS"
+  </a>by Kendall Whitehouse.
+  <br><br>
+
+  </li><li><a href="http://tex.loria.fr/outils/pdf_from.pdf">
+  "Acrobat PDF Files from TeX"</a> by Y&amp;Y,
+  Inc.<br><br>
+</li></ul>
+<p></p>
+
+
+<a name="other_doc_makers_info" href="#TOCother_doc_makers">
+<h2>MS Word and Other Document Creation Software</h2>
+</a>
+
+<p>
+Independent of the application used to create the document, the final
+PDF file can be created from a postscript intermediate as discussed
+<a href="#pdf_creation_info">below</a>. On most applications
+that are running on MS Windows, a postscript file can be created
+by selecting a postscript printer driver and then printing to a file.
+</p>
+
+<p>
+If MS Word is used to create the document, it is possible to print the
+result directly to Adobe Acrobat Distiller. It is important to set the
+proper Distiller job options. In order to do so, please download and
+install the Adobe Acrobat Distiller job
+options file from <a href="http://junctionpublishing.org/vgtc/Templates/tph_pdfsettings.joboptions.zip">here.</a></p>
+
+<p>
+Please use that job options file when creating PDF documents in Acrobat
+Distiller (Version 5.0 will work with Acrobat
+Distiller 7.0.). The  job options file provided embeds all typefaces
+and does not downsample or subsample images when creating the PDF document.</p>
+
+<p>
+To create a PDF document from FrameMaker it is necessary to
+create a postscript intermediate because the Distiller job
+options cannot be manipulated from within FrameMaker itself.
+</p>
+
+
+
+<a name="pdf_creation_info" href="#TOCpdf_creation">
+<h2>Creating PDF Files From Postscript</h2>
+</a>
+
+<p>
+In order to produce a camera ready PDF document it is essential
+that images are stored at a sufficiently high resolution and
+that no lossy compression is used during the PDF creation
+process. Steve Spencer gives the following rule of thumb: The
+resolution of the image in pixels should be 300 times the size
+of the image in inches as it appears in the document. So for
+example a 2 inch by 3 inch image should have a resolution of at
+least 600 by 900.
+</p>
+
+<p>
+The standard tool for creating PDF documents is "Adobe Acrobat
+Distiller". We recommend using Adobe Acrobat Distiller setting found <a href="http://junctionpublishing.org/vgtc/Templates/tph_pdfsettings.joboptions.zip">here</a>. </p>
+
+<!--
+These tips are also applicable to the 
+<a href = "http://createpdf.adobe.com/">online services</a> at
+Adobe's site (free for five PDF creation jobs).
+-->
+
+<p>
+Another acceptable PDF creation tool is ps2pdf. A number of flags need
+to be passed to ps2pdf to preserve the quality of the images in the
+final document:
+<br><br>
+<code>
+ps2pdf -sPAPERSIZE=letter \<br>
+-dMaxSubsetPct=100 -dCompatibilityLevel=1.3 \<br>
+-dSubsetFonts=true -dEmbedAllFonts=true \<br>
+-dAutoFilterColorImages=false \<br>
+-dAutoFilterGrayImages=false \<br>
+-dColorImageFilter=/FlateEncode \<br>
+-dGrayImageFilter=/FlateEncode \<br>
+-dMonoImageFilter=/FlateEncode \<br>
+papername.ps papername.pdf
+</code>
+</p>
+
+<p>
+(Please note, that the <code>FlateEncode</code> switch doesn't seem
+to work under MiKTeX. We are currently looking into this.)
+</p>
+
+<p>
+There are other tools available for creating PDF documents, however some
+of them, such as PDFWriter, do not give the user sufficient control
+over the document creation process to produce an acceptable
+result. It is important that images be kept at a sufficiently high
+resolution and that all fonts that are used be embedded in the PDF
+document.
+</p>
+
+<a name="problems_info" href="#TOCproblems">
+<h2>Common Problems</h2>
+</a>
+
+<p> Here we will document solutions or work-arounds to recurring
+problems that we've encountered. See also the collection of <b>Tips
+and Tricks</b> on the <a href="http://www.siggraph.org/publications/instructions/">SIGGRAPH
+site</a>.
+
+</p><ul class="list">
+  <li><b>Text shifted up on page:</b> This problem sometimes occurs
+  when using TeX on implementations that are configured for A4
+  paper. Try passing the <code>-tletter</code> option to
+  <code>dvips</code>.
+  </li>
+  <li> Sometimes Type 3 fonts hide in your included eps files.
+</li></ul>
+
+<p></p>
+
+
+<!-- INSERTCONTENTSEND -->
+    </td>
+  </tr>
+</tbody></table>
+
+
+
+</body></html>
