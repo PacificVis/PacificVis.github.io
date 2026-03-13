@@ -1,0 +1,13 @@
+logos:
+  - src: "/ieeelogo.png"
+    alt: "IEEE"
+    height: "h-10 sm:h-12"
+    href: "https://www.ieee.org/"
+  - src: "/ieeecslogo.png"
+    alt: "IEEE Computer Society"
+    height: "h-10 sm:h-12"
+    href: "https://www.computer.org/"
+  - src: "/vgtclogo.jpg"
+    alt: "IEEE VGTC"
+    height: "h-14 sm:h-16"
+    href: "https://tc.computer.org/vgtc/"

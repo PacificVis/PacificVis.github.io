@@ -1,0 +1,23 @@
+sectionLabel: "About"
+heading: "Visualization Research,"
+headingLine2: "Across the Pacific."
+cards:
+  - icon: "Globe"
+    title: "International Event"
+    description: "Promoting visualization research and technologies, bringing together researchers especially from the Asia-Pacific region."
+  - icon: "BookOpen"
+    title: "IEEE Sponsored"
+    description: "Sponsored by IEEE VGTC, PacificVis offers multiple submission tracks including a TVCG journal paper track."
+  - icon: "Users"
+    title: "Since 2008"
+    description: "Born in Kyoto in 2008, PacificVis has held annual events across the Asia-Pacific region for over 17 years."
+counters:
+  - end: 19
+    label: "Events"
+  - end: 10
+    label: "Countries"
+  - end: 18
+    label: "Years"
+charterLink:
+  text: "View PacificVis Charter"
+  href: "/charter"

@@ -1,0 +1,100 @@
+sectionLabel: "Events"
+heading: "Events"
+subtitle: "Explore the history of PacificVis conferences held across the Asia-Pacific region."
+items:
+  - year: 2026
+    location: "Sydney"
+    country: "Australia"
+    url: "https://pacificvis2026.github.io/"
+    dates: "April 20–23, 2026"
+    highlight: true
+  - year: 2025
+    location: "Taipei"
+    country: "Taiwan"
+    url: "https://pacificvis2025.github.io/pages/index.html"
+    dates: "April 22–25, 2025"
+  - year: 2024
+    location: "Tokyo"
+    country: "Japan"
+    url: "https://pacificvis.github.io/pvis2024/"
+    dates: "April 23–26, 2024"
+  - year: 2023
+    location: "Seoul"
+    country: "South Korea"
+    url: "https://pvis2023.github.io/pvis2023/"
+    dates: "April 18–21, 2023"
+  - year: 2022
+    location: "Tsukuba"
+    country: "Japan"
+    url: "https://pvis2022.github.io/pvis2022/"
+    dates: "April 11–14, 2022"
+  - year: 2021
+    location: "Tianjin"
+    country: "China"
+    url: "http://vis.tju.edu.cn/pvis2021/index.html"
+    dates: "April 19–21, 2021"
+  - year: 2020
+    location: "Tianjin"
+    country: "China"
+    url: "http://vis.tju.edu.cn/pvis2020/index.html"
+    dates: "June 3–5, 2020"
+  - year: 2019
+    location: "Bangkok"
+    country: "Thailand"
+    url: "http://pvis2019.cbs.chula.ac.th/home.aspx"
+    dates: "April 23–26, 2019"
+  - year: 2018
+    location: "Kobe"
+    country: "Japan"
+    url: "http://itolab.is.ocha.ac.jp/pvis2018/"
+    dates: "April 10–13, 2018"
+  - year: 2017
+    location: "Seoul"
+    country: "South Korea"
+    url: "http://pacificvis.snu.ac.kr/"
+    dates: "April 18–21, 2017"
+  - year: 2016
+    location: "Taipei"
+    country: "Taiwan"
+    url: "http://graphics.csie.ntust.edu.tw/graphics/Vis_2016/index.html"
+    dates: "April 19–22, 2016"
+  - year: 2015
+    location: "Hangzhou"
+    country: "China"
+    url: "http://www.cad.zju.edu.cn/home/pvis2015/"
+    dates: "April 14–17, 2015"
+  - year: 2014
+    location: "Yokohama"
+    country: "Japan"
+    url: "https://fj.ics.keio.ac.jp/pvis2014/index.html"
+    dates: "March 4–7, 2014"
+  - year: 2013
+    location: "Sydney"
+    country: "Australia"
+    url: "http://sydney.edu.au/engineering/it/groups/visual/pvis2013/welcome/index.php"
+    dates: "February 26 – March 1, 2013"
+  - year: 2012
+    location: "Songdo"
+    country: "South Korea"
+    url: "http://hcil.snu.ac.kr/PacificVis2012"
+    dates: "February 28 – March 2, 2012"
+  - year: 2011
+    location: "Hong Kong"
+    country: "China"
+    url: "http://i.cs.hku.hk/~pvis2011/"
+    dates: "March 1–4, 2011"
+  - year: 2010
+    location: "Taipei"
+    country: "Taiwan"
+    url: "http://graphics.csie.ntu.edu.tw/pvis2010/"
+    dates: "March 2–5, 2010"
+  - year: 2009
+    location: "Beijing"
+    country: "China"
+    url: "http://vis.pku.edu.cn/pvs2009/"
+    dates: "April 20–23, 2009"
+  - year: 2008
+    location: "Kyoto"
+    country: "Japan"
+    url: "http://www.viz.media.kyoto-u.ac.jp/conf/pvis2008/"
+    dates: "March 4–7, 2008"
