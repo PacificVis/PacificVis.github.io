@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
+import { useRef } from "react";
 import { Globe, Users, BookOpen, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import type { AboutData } from "@/lib/content";
@@ -11,35 +11,6 @@ const iconMap: Record<string, React.ReactNode> = {
   BookOpen: <BookOpen size={24} />,
   Users: <Users size={24} />,
 };
-
-function Counter({ end, label, duration = 2 }: { end: number; label: string; duration?: number }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    if (!inView) return;
-    let start = 0;
-    const step = end / (duration * 60);
-    const timer = setInterval(() => {
-      start += step;
-      if (start >= end) {
-        setCount(end);
-        clearInterval(timer);
-      } else {
-        setCount(Math.floor(start));
-      }
-    }, 1000 / 60);
-    return () => clearInterval(timer);
-  }, [inView, end, duration]);
-
-  return (
-    <div ref={ref} className="text-center">
-      <p className="text-4xl sm:text-5xl font-bold text-accent">{count}+</p>
-      <p className="mt-2 text-sm text-text-secondary">{label}</p>
-    </div>
-  );
-}
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -96,19 +67,6 @@ export default function About({ data }: { data: AboutData }) {
             </motion.div>
           ))}
         </div>
-
-        {/* Stats */}
-        <motion.div
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          variants={fadeUp}
-          custom={4}
-          className="grid grid-cols-3 gap-8 max-w-lg mx-auto"
-        >
-          {data.counters.map((counter) => (
-            <Counter key={counter.label} end={counter.end} label={counter.label} />
-          ))}
-        </motion.div>
 
         <motion.div
           initial="hidden"

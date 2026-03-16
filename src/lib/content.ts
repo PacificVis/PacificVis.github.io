@@ -36,17 +36,11 @@ export interface AboutCard {
   description: string;
 }
 
-export interface AboutCounter {
-  end: number;
-  label: string;
-}
-
 export interface AboutData {
   sectionLabel: string;
   heading: string;
   headingLine2: string;
   cards: AboutCard[];
-  counters: AboutCounter[];
   charterLink: {
     text: string;
     href: string;
