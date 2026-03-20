@@ -9,11 +9,11 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <Image
-              src="/pacificvis-logo.svg"
+              src="/pacificvis-logo-white.svg"
               alt="PacificVis"
               width={140}
               height={34}
-              className="mb-3 brightness-0 invert"
+              className="mb-3"
             />
             <p className="text-sm opacity-60 leading-relaxed">
               IEEE Pacific Visualization Conference.

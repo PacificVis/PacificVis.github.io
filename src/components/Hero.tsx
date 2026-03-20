@@ -181,11 +181,11 @@ export default function Hero({ data }: { data: HeroData }) {
           className="flex flex-col items-center"
         >
           <Image
-            src="/pacificvis-logo.svg"
+            src="/pacificvis-logo-white.svg"
             alt={data.title}
             width={320}
             height={122}
-            className="brightness-0 invert w-[320px] sm:w-[320px] md:w-100 h-auto"
+            className="w-[320px] sm:w-[320px] md:w-100 h-auto"
             priority
           />
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-white/90 tracking-tight mt-10">
