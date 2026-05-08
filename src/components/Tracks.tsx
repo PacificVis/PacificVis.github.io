@@ -3,23 +3,24 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import {
-  FileText,
-  BookOpen,
-  StickyNote,
-  LayoutGrid,
-  Presentation,
-  Users,
-  ExternalLink,
-} from "lucide-react";
-import type { TracksData } from "@/lib/content";
+  ArrowUpRightIcon,
+  BookOpenIcon,
+  FileTextIcon,
+  NoteIcon,
+  SquaresFourIcon,
+  PresentationIcon,
+  UsersIcon,
+  type Icon as PhosphorIcon,
+} from "@phosphor-icons/react";
+import type { TracksData, TrackItem } from "@/lib/content";
 
-const iconMap: Record<string, React.ReactNode> = {
-  FileText: <FileText size={28} />,
-  BookOpen: <BookOpen size={28} />,
-  StickyNote: <StickyNote size={28} />,
-  Layout: <LayoutGrid size={28} />,
-  Presentation: <Presentation size={28} />,
-  Users: <Users size={28} />,
+const iconMap: Record<string, PhosphorIcon> = {
+  BookOpen: BookOpenIcon,
+  FileText: FileTextIcon,
+  StickyNote: NoteIcon,
+  Layout: SquaresFourIcon,
+  Presentation: PresentationIcon,
+  Users: UsersIcon,
 };
 
 const fadeUp = {
@@ -30,6 +31,61 @@ const fadeUp = {
     transition: { duration: 0.6, delay: i * 0.1 },
   }),
 };
+
+const ruleDraw = {
+  hidden: { scaleX: 0 },
+  visible: (i: number) => ({
+    scaleX: 1,
+    transition: {
+      duration: 0.7,
+      delay: 0.2 + i * 0.06,
+      ease: [0.65, 0, 0.35, 1] as const,
+    },
+  }),
+};
+
+function Row({ track }: { track: TrackItem }) {
+  const Icon = iconMap[track.icon];
+
+  const inner = (
+    <div className="grid grid-cols-[1.5rem_1fr_1.25rem] sm:grid-cols-[1.75rem_1fr_1.5rem] items-start gap-x-3 sm:gap-x-4 py-7 sm:py-9">
+      <span className="text-text-secondary group-hover:text-accent transition-colors pt-1">
+        {Icon && <Icon size={22} weight="regular" />}
+      </span>
+      <div>
+        <h3 className="font-serif text-xl sm:text-[1.6rem] leading-[1.15] tracking-tight text-foreground mb-2 transition-colors group-hover:text-accent">
+          {track.title}
+        </h3>
+        <p className="text-[14.5px] leading-relaxed text-text-secondary max-w-[42rem]">
+          {track.description}
+        </p>
+      </div>
+      <span className="self-start pt-1.5 justify-self-end text-text-secondary">
+        {track.href ? (
+          <ArrowUpRightIcon
+            size={18}
+            weight="regular"
+            className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 group-hover:text-accent transition-all duration-300 ease-out"
+          />
+        ) : null}
+      </span>
+    </div>
+  );
+
+  if (track.href) {
+    return (
+      <a
+        href={track.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group block"
+      >
+        {inner}
+      </a>
+    );
+  }
+  return <div className="group">{inner}</div>;
+}
 
 export default function Tracks({ data }: { data: TracksData }) {
   const ref = useRef(null);
@@ -56,58 +112,27 @@ export default function Tracks({ data }: { data: TracksData }) {
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {data.items.map((track, i) => {
-            const card = (
-              <div className="w-12 h-12 rounded-xl bg-accent/10 text-accent flex items-center justify-center mb-5">
-                {iconMap[track.icon]}
-              </div>
-            );
-
-            const inner = (
-              <>
-                {card}
-                <h3 className="text-lg font-semibold mb-3 flex items-center gap-1.5">
-                  {track.title}
-                  {track.href && (
-                    <ExternalLink
-                      size={14}
-                      className="text-text-secondary opacity-0 group-hover:opacity-100 transition-all"
-                    />
-                  )}
-                </h3>
-                <p className="text-sm leading-relaxed text-text-secondary">
-                  {track.description}
-                </p>
-              </>
-            );
-
-            return (
-              <motion.div
-                key={track.title}
+        <ul className="relative">
+          {data.items.map((track, i) => (
+            <li key={track.title} className="relative">
+              <motion.span
                 initial="hidden"
                 animate={inView ? "visible" : "hidden"}
-                variants={fadeUp}
-                custom={i + 1}
-              >
-                {track.href ? (
-                  <a
-                    href={track.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group block h-full rounded-2xl border border-border bg-surface p-6 sm:p-8 hover:border-accent/30 hover:shadow-lg hover:-translate-y-0.5 transition-all"
-                  >
-                    {inner}
-                  </a>
-                ) : (
-                  <div className="group h-full rounded-2xl border border-border bg-surface p-6 sm:p-8 hover:border-accent/30 transition-colors">
-                    {inner}
-                  </div>
-                )}
-              </motion.div>
-            );
-          })}
-        </div>
+                variants={ruleDraw}
+                custom={i}
+                className="absolute top-0 left-0 right-0 block h-px bg-foreground/15 origin-left"
+              />
+              <Row track={track} />
+            </li>
+          ))}
+          <motion.span
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+            variants={ruleDraw}
+            custom={data.items.length}
+            className="absolute bottom-0 left-0 right-0 block h-px bg-foreground/15 origin-left"
+          />
+        </ul>
       </div>
     </section>
   );

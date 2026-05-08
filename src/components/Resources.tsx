@@ -2,14 +2,21 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { BookOpen, FileText, Scale, ShieldCheck, ExternalLink } from "lucide-react";
+import {
+  ArrowUpRightIcon,
+  BookOpenIcon,
+  FileTextIcon,
+  ShieldCheckIcon,
+  ScalesIcon,
+  type Icon as PhosphorIcon,
+} from "@phosphor-icons/react";
 import type { ResourcesData } from "@/lib/content";
 
-const iconMap: Record<string, React.ReactNode> = {
-  BookOpen: <BookOpen size={22} />,
-  FileText: <FileText size={22} />,
-  ShieldCheck: <ShieldCheck size={22} />,
-  Scale: <Scale size={22} />,
+const iconMap: Record<string, PhosphorIcon> = {
+  BookOpen: BookOpenIcon,
+  FileText: FileTextIcon,
+  ShieldCheck: ShieldCheckIcon,
+  Scale: ScalesIcon,
 };
 
 const fadeUp = {
@@ -21,6 +28,18 @@ const fadeUp = {
   }),
 };
 
+const ruleDraw = {
+  hidden: { scaleX: 0 },
+  visible: (i: number) => ({
+    scaleX: 1,
+    transition: {
+      duration: 0.7,
+      delay: 0.2 + i * 0.06,
+      ease: [0.65, 0, 0.35, 1] as const,
+    },
+  }),
+};
+
 export default function Resources({ data }: { data: ResourcesData }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
@@ -29,6 +48,7 @@ export default function Resources({ data }: { data: ResourcesData }) {
     <section
       id="resources"
       className="section-padding bg-surface-alt"
+      style={{ ["--accent" as string]: "var(--accent-orange)" }}
       ref={ref}
     >
       <div className="mx-auto max-w-5xl">
@@ -50,40 +70,52 @@ export default function Resources({ data }: { data: ResourcesData }) {
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 gap-5">
-          {data.items.map((res, i) => (
-            <motion.div
-              key={res.title}
-              initial="hidden"
-              animate={inView ? "visible" : "hidden"}
-              variants={fadeUp}
-              custom={i + 1}
-            >
-              <a
-                href={res.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center gap-4 rounded-2xl border border-border bg-background p-6 h-full hover:border-accent/30 hover:shadow-lg hover:-translate-y-0.5 transition-all"
-              >
-                <div className="w-11 h-11 rounded-xl bg-accent/10 text-accent flex items-center justify-center shrink-0 mt-0.5">
-                  {iconMap[res.icon]}
-                </div>
-                <div className="min-w-0 flex-1">
-                  <h3 className="text-base font-semibold mb-1 flex items-center gap-1.5">
-                    {res.title}
-                    <ExternalLink
-                      size={13}
-                      className="text-text-secondary opacity-0 group-hover:opacity-100 transition-all"
-                    />
-                  </h3>
-                  <p className="text-sm leading-relaxed text-text-secondary">
-                    {res.description}
-                  </p>
-                </div>
-              </a>
-            </motion.div>
-          ))}
-        </div>
+        <ul className="relative">
+          {data.items.map((res, i) => {
+            const Icon = iconMap[res.icon];
+            return (
+              <li key={res.title} className="relative">
+                <motion.span
+                  initial="hidden"
+                  animate={inView ? "visible" : "hidden"}
+                  variants={ruleDraw}
+                  custom={i}
+                  className="absolute top-0 left-0 right-0 block h-px bg-foreground/15 origin-left"
+                />
+                <a
+                  href={res.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group grid grid-cols-[1.5rem_1fr_1.25rem] sm:grid-cols-[1.75rem_1fr_1.5rem] items-start gap-x-3 sm:gap-x-4 py-7 sm:py-9"
+                >
+                  <span className="text-text-secondary group-hover:text-accent transition-colors pt-1">
+                    {Icon && <Icon size={22} weight="regular" />}
+                  </span>
+                  <div>
+                    <h3 className="font-serif text-xl sm:text-[1.6rem] leading-[1.15] tracking-tight text-foreground mb-2 transition-colors group-hover:text-accent">
+                      {res.title}
+                    </h3>
+                    <p className="text-[14.5px] leading-relaxed text-text-secondary max-w-[42rem]">
+                      {res.description}
+                    </p>
+                  </div>
+                  <ArrowUpRightIcon
+                    size={18}
+                    weight="regular"
+                    className="self-start pt-1.5 justify-self-end text-text-secondary group-hover:text-accent group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all duration-300 ease-out"
+                  />
+                </a>
+              </li>
+            );
+          })}
+          <motion.span
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
+            variants={ruleDraw}
+            custom={data.items.length}
+            className="absolute bottom-0 left-0 right-0 block h-px bg-foreground/15 origin-left"
+          />
+        </ul>
       </div>
     </section>
   );

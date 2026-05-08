@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { MapPin, ExternalLink } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import type { ConferencesData } from "@/lib/content";
 
 const fadeUp = {
@@ -13,6 +13,30 @@ const fadeUp = {
     transition: { duration: 0.5, delay: i * 0.05 },
   }),
 };
+
+const MONTHS = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+function formatDates(dates?: string): string {
+  if (!dates) return "";
+  let stripped = dates.replace(/,\s*\d{4}\s*$/, "");
+  for (const m of MONTHS) {
+    stripped = stripped.replace(new RegExp(`\\b${m}\\b`, "g"), m.slice(0, 3));
+  }
+  return stripped;
+}
 
 export default function Events({ data }: { data: ConferencesData }) {
   const ref = useRef(null);
@@ -44,7 +68,7 @@ export default function Events({ data }: { data: ConferencesData }) {
           animate={inView ? "visible" : "hidden"}
           variants={fadeUp}
           custom={1}
-          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3"
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 border-t border-l border-foreground/15"
         >
           {data.items.map((conf) => (
             <a
@@ -52,31 +76,34 @@ export default function Events({ data }: { data: ConferencesData }) {
               href={conf.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`group relative rounded-xl border px-4 py-3 transition-all hover:shadow-md hover:-translate-y-0.5 ${
-                conf.highlight
-                  ? "border-accent/40 bg-accent/5 hover:border-accent/60"
-                  : "border-border bg-background hover:border-accent/30"
-              }`}
+              className="group relative block px-5 py-6 sm:px-6 sm:py-7 border-r border-b border-foreground/15 transition-colors hover:bg-foreground/[0.025]"
             >
-              {conf.highlight && (
-                <span className="absolute top-2.5 right-2.5 text-[9px] font-medium bg-accent text-white px-1.5 py-0.5 rounded-full">
-                  Latest
-                </span>
-              )}
-              <p className="text-lg font-bold">{conf.year}</p>
-              <div className="mt-1 flex items-center gap-1 text-xs text-text-secondary">
-                <MapPin size={11} />
-                <span>
-                  {conf.location}, {conf.country}
-                </span>
-              </div>
-              {conf.dates && (
-                <p className="mt-0.5 text-[11px] text-text-secondary">{conf.dates}</p>
-              )}
-              <ExternalLink
-                size={12}
-                className="absolute bottom-3 right-3 text-text-secondary opacity-0 group-hover:opacity-100 transition-opacity"
+              <ArrowUpRight
+                size={14}
+                className="absolute top-6 right-5 sm:top-7 sm:right-6 text-text-secondary opacity-0 -translate-x-0.5 translate-y-0.5 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:text-accent transition-all duration-300 ease-out"
               />
+              <div className="flex items-baseline gap-1.5 mb-3">
+                <span className="font-serif text-[1.9rem] sm:text-[2.1rem] leading-none tracking-tight text-foreground transition-colors group-hover:text-accent">
+                  {conf.year}
+                </span>
+                {conf.highlight && (
+                  <span
+                    aria-hidden
+                    className="inline-block w-1.5 h-1.5 rounded-full bg-accent translate-y-[-0.7em]"
+                  />
+                )}
+              </div>
+              <p className="text-[14px] font-medium text-foreground leading-tight">
+                {conf.location}
+              </p>
+              <p className="text-[13px] text-text-secondary leading-tight mt-0.5">
+                {conf.country}
+              </p>
+              {conf.dates && (
+                <p className="font-mono text-[10.5px] tracking-[0.14em] uppercase text-text-secondary mt-3">
+                  {formatDates(conf.dates)}
+                </p>
+              )}
             </a>
           ))}
         </motion.div>

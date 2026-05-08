@@ -31,9 +31,9 @@ export interface HeroData {
 }
 
 export interface AboutCard {
-  icon: string;
   title: string;
   description: string;
+  image: string;
 }
 
 export interface AboutData {

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, MapPin, Calendar } from "lucide-react";
+import { ArrowUpRightIcon } from "@phosphor-icons/react";
 import type { HeroData } from "@/lib/content";
 
 export default function Hero({ data }: { data: HeroData }) {
@@ -197,7 +197,7 @@ export default function Hero({ data }: { data: HeroData }) {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.25 }}
-          className="mt-5 text-lg sm:text-xl text-blue-100/70 max-w-2xl mx-auto leading-relaxed"
+          className="mt-5 text-lg text-blue-100/70 max-w-2xl mx-auto leading-relaxed font-serif"
         >
           {data.tagline}
         </motion.p>
@@ -213,30 +213,38 @@ export default function Hero({ data }: { data: HeroData }) {
             href={data.nextEvent.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative block rounded-2xl border border-white/10 bg-slate-900/60 px-8 py-5 sm:px-12 sm:py-6 text-left hover:border-white/20 transition-colors"
+            className="group relative block rounded-lg border border-white/[0.12] bg-gradient-to-br from-white/[0.05] to-white/[0.015] backdrop-blur-md px-8 py-5 sm:px-12 sm:py-6 text-left transition-colors hover:border-white/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]"
           >
-            <div className="flex items-center gap-6 sm:gap-10">
+            <div className="flex items-center gap-8 sm:gap-10">
               <div>
-                <p className="text-sm font-medium text-blue-300 mb-1">
-                  Recent Event
-                </p>
-                <p className="text-2xl sm:text-3xl font-bold text-white">
+                <div className="flex items-center gap-2 mb-2.5">
+                  <span
+                    aria-hidden
+                    className="relative inline-flex w-1.5 h-1.5"
+                  >
+                    <span className="absolute inset-0 rounded-full bg-accent" />
+                    <span className="absolute inset-0 rounded-full bg-accent animate-ping opacity-60" />
+                  </span>
+                  <p className="font-mono text-[10.5px] tracking-[0.24em] uppercase text-white/55">
+                    Recent Event
+                  </p>
+                </div>
+                <span className="text-2xl sm:text-3xl leading-none tracking-tight text-white">
                   {data.nextEvent.name}
-                </p>
-              </div>
-              <div className="flex flex-col gap-1.5 text-sm text-blue-100/60">
-                <span className="flex items-center gap-2">
-                  <Calendar size={14} />
-                  {data.nextEvent.dates}
-                </span>
-                <span className="flex items-center gap-2">
-                  <MapPin size={14} />
-                  {data.nextEvent.location}
                 </span>
               </div>
-              <ArrowRight
+
+              <div className="border-l border-white/[0.12] pl-8 sm:pl-10 flex flex-col gap-1.5 font-mono text-[11px] sm:text-[12px] tracking-[0.16em] uppercase">
+                <span className="text-white/70">
+                  {data.nextEvent.dates.replace(/,\s*\d{4}\s*$/, "")}
+                </span>
+                <span className="text-white/50">{data.nextEvent.location}</span>
+              </div>
+
+              <ArrowUpRightIcon
                 size={20}
-                className="text-white/40 group-hover:text-white group-hover:translate-x-1 transition-all ml-auto"
+                weight="regular"
+                className="text-white/30 group-hover:text-white group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all duration-300 ease-out ml-auto"
               />
             </div>
           </a>
