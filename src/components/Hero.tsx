@@ -226,7 +226,7 @@ export default function Hero({ data }: { data: HeroData }) {
                     <span className="absolute inset-0 rounded-full bg-accent animate-ping opacity-60" />
                   </span>
                   <p className="font-mono text-[10.5px] tracking-[0.24em] uppercase text-white/55">
-                    Recent Event
+                    Upcoming Event
                   </p>
                 </div>
                 <span className="text-2xl sm:text-3xl leading-none tracking-tight text-white">

@@ -1,0 +1,19 @@
+items:
+  - label: "About"
+    href: "#about"
+    dropdown:
+      - title: "About PacificVis"
+        description: "Mission, history, and scope of the IEEE Pacific Visualization Conference."
+        href: "#about"
+      - title: "PacificVis Charter"
+        description: "Governing charter, steering committee structure, and organizational rules."
+        href: "/charter"
+  - label: "Tracks"
+    href: "#tracks"
+  - label: "Resources"
+    href: "#resources"
+  - label: "Events"
+    href: "#events"
+cta:
+  label: "PacificVis 2027"
+  href: "https://pacificvis2027.github.io/"

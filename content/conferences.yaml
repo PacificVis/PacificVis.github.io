@@ -2,12 +2,17 @@ sectionLabel: "Events"
 heading: "Events"
 subtitle: "Explore the history of PacificVis conferences held across the Asia-Pacific region."
 items:
+  - year: 2027
+    location: "Busan"
+    country: "South Korea"
+    url: "https://pacificvis2027.github.io/"
+    dates: "April 19–22, 2027"
+    highlight: true
   - year: 2026
     location: "Sydney"
     country: "Australia"
     url: "https://pacificvis2026.github.io/"
     dates: "April 20–23, 2026"
-    highlight: true
   - year: 2025
     location: "Taipei"
     country: "Taiwan"

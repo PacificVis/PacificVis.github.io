@@ -6,45 +6,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowRight, ExternalLink } from "lucide-react";
+import type { NavbarData } from "@/lib/content";
 
-interface DropdownItem {
-  title: string;
-  description: string;
-  href: string;
-  external?: boolean;
-}
-
-interface NavItem {
-  label: string;
-  href: string;
-  dropdown?: DropdownItem[];
-}
-
-const navItems: NavItem[] = [
-  {
-    label: "About",
-    href: "#about",
-    dropdown: [
-      {
-        title: "About PacificVis",
-        description:
-          "Mission, history, and scope of the IEEE Pacific Visualization Conference.",
-        href: "#about",
-      },
-      {
-        title: "PacificVis Charter",
-        description:
-          "Governing charter, steering committee structure, and organizational rules.",
-        href: "/charter",
-      },
-    ],
-  },
-  { label: "Tracks", href: "#tracks" },
-  { label: "Resources", href: "#resources" },
-  { label: "Events", href: "#events" },
-];
-
-export default function Navbar() {
+export default function Navbar({ data }: { data: NavbarData }) {
+  const { items: navItems, cta } = data;
   const pathname = usePathname();
   const isHome = pathname === "/";
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -114,13 +79,13 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="https://pacificvis2026.github.io/"
+              href={cta.href}
               target="_blank"
               rel="noopener noreferrer"
               onMouseEnter={() => setActiveDropdown(null)}
               className="ml-3 text-sm bg-accent hover:bg-accent-hover text-white px-4 py-1.5 rounded-full transition-colors"
             >
-              PacificVis 2026
+              {cta.label}
             </a>
           </div>
 
@@ -291,12 +256,12 @@ export default function Navbar() {
                   </div>
                 ))}
                 <a
-                  href="https://pacificvis2026.github.io/"
+                  href={cta.href}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm bg-accent text-white px-4 py-2 rounded-full text-center transition-colors hover:bg-accent-hover"
                 >
-                  PacificVis 2026
+                  {cta.label}
                 </a>
               </div>
             </motion.div>

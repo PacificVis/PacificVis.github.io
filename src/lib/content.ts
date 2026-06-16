@@ -75,6 +75,29 @@ export interface ResourcesData {
   items: ResourceItem[];
 }
 
+export interface NavbarDropdownItem {
+  title: string;
+  description: string;
+  href: string;
+  external?: boolean;
+}
+
+export interface NavbarItem {
+  label: string;
+  href: string;
+  dropdown?: NavbarDropdownItem[];
+}
+
+export interface NavbarCta {
+  label: string;
+  href: string;
+}
+
+export interface NavbarData {
+  items: NavbarItem[];
+  cta: NavbarCta;
+}
+
 export interface ConferenceItem {
   year: number;
   location: string;
@@ -142,6 +165,10 @@ export function getResources(): ResourcesData {
 
 export function getConferences(): ConferencesData {
   return readYaml<ConferencesData>("conferences.yaml");
+}
+
+export function getNavbar(): NavbarData {
+  return readYaml<NavbarData>("navbar.yaml");
 }
 
 export function getSponsors(): SponsorsData {

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Hedvig_Letters_Serif } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { getNavbar } from "@/lib/content";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -41,6 +42,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const navbar = getNavbar();
   return (
     <html lang="en">
       <head>
@@ -50,7 +52,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${hedvigSerif.variable} antialiased`}
       >
-        <Navbar />
+        <Navbar data={navbar} />
         <main className="pt-14">{children}</main>
         <Footer />
       </body>
