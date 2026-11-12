@@ -56,7 +56,7 @@ items:
   - year: 2017
     location: "Seoul"
     country: "South Korea"
-    url: "http://pacificvis.snu.ac.kr/"
+    url: "https://pacificvis.org/pvis2017/"
     dates: "April 18–21, 2017"
   - year: 2016
     location: "Taipei"
