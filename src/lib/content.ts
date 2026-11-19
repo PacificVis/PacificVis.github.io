@@ -45,6 +45,10 @@ export interface AboutData {
     text: string;
     href: string;
   };
+  financialReportsLink: {
+    text: string;
+    href: string;
+  };
 }
 
 export interface TrackItem {
@@ -122,6 +126,15 @@ export interface CharterData {
   content: string;
 }
 
+export interface FinancialReportsData {
+  items: {
+    year: number;
+    location: string;
+    reportDate: string;
+    pdfHref: string;
+  }[];
+}
+
 // ── Helpers ────────────────────────────────────────────────────────
 
 const contentDir = path.join(process.cwd(), "content");
@@ -153,6 +166,10 @@ export function getHero(): HeroData {
 
 export function getAbout(): AboutData {
   return readYaml<AboutData>("about.yaml");
+}
+
+export function getFinancialReports(): FinancialReportsData {
+  return readYaml<FinancialReportsData>("financial-reports.yaml");
 }
 
 export function getTracks(): TracksData {

@@ -108,19 +108,22 @@ export default function About({ data }: { data: AboutData }) {
           animate={inView ? "visible" : "hidden"}
           variants={fadeUp}
           custom={5}
-          className="text-center"
+          className="flex flex-wrap justify-center gap-3"
         >
-          <Link
-            href={data.charterLink.href}
-            className="group inline-flex items-center gap-2 text-sm font-medium border border-border hover:border-accent/40 rounded-full px-5 py-2.5 text-text-secondary hover:text-accent transition-all"
-          >
-            {data.charterLink.text}
-            <ArrowRightIcon
-              size={14}
-              weight="regular"
-              className="group-hover:translate-x-0.5 transition-transform"
-            />
-          </Link>
+          {[data.charterLink, data.financialReportsLink].map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="group inline-flex items-center gap-2 text-sm font-medium border border-border hover:border-accent/40 rounded-full px-5 py-2.5 text-text-secondary hover:text-accent transition-all"
+            >
+              {link.text}
+              <ArrowRightIcon
+                size={14}
+                weight="regular"
+                className="group-hover:translate-x-0.5 transition-transform"
+              />
+            </Link>
+          ))}
         </motion.div>
       </div>
     </section>
