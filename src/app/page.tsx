@@ -23,6 +23,18 @@ export default function Home() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "PacificVis",
+            alternateName: "IEEE Pacific Visualization Conference",
+            url: "https://pacificvis.org/",
+          }),
+        }}
+      />
       <Hero data={hero} />
       <About data={about} />
       <Tracks data={tracks} />

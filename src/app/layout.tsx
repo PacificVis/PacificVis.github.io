@@ -24,6 +24,9 @@ const hedvigSerif = Hedvig_Letters_Serif({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://pacificvis.org"),
+  openGraph: {
+    siteName: "PacificVis",
+  },
   title: "PacificVis — IEEE Pacific Visualization Conference",
   description:
     "IEEE Pacific Visualization Conference (PacificVis) — Advancing the frontiers of visualization research across the Pacific. Sponsored by IEEE VGTC.",
